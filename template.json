@@ -5,6 +5,9 @@
         "name": {
             "type": "string"
         },
+        "tags": {
+            "type": "string"
+        },
         "location": {
             "type": "string"
         },
