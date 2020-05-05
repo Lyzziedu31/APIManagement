@@ -5,6 +5,9 @@
         "name": {
             "value": "PlasticOriginAPIM"
         },
+        "tags": {
+            "value": "APIM"
+        },
         "location": {
             "value": "westeurope"
         },
