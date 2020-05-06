@@ -5,8 +5,11 @@
         "name": {
             "value": "PlasticOriginAPIM"
         },
-        "tags": {
-            "value": "APIM"
+        "tags1": {
+            "value": "LDE"
+        },
+        "tags2": {
+            "value": "Dev"
         },
         "location": {
             "value": "westeurope"
