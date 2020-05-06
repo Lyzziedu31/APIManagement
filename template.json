@@ -11,7 +11,7 @@
         "users_1_lastName": {
             "type": "SecureString"
         },
-        "service_APIM1783_name": {
+        "service_name": {
             "defaultValue": "APIM1783",
             "type": "String"
         }
@@ -21,7 +21,7 @@
         {
             "type": "Microsoft.ApiManagement/service",
             "apiVersion": "2019-12-01",
-            "name": "[parameters('service_APIM1783_name')]",
+            "name": "[parameters('service_name')]",
             "location": "West Europe",
             "tags": {
                 "Name": "LDE",
@@ -61,9 +61,9 @@
         {
             "type": "Microsoft.ApiManagement/service/apis",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api')]",
+            "name": "[concat(parameters('service_name'), '/echo-api')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Echo API",
@@ -80,9 +80,9 @@
         {
             "type": "Microsoft.ApiManagement/service/groups",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/administrators')]",
+            "name": "[concat(parameters('service_name'), '/administrators')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Administrators",
@@ -93,9 +93,9 @@
         {
             "type": "Microsoft.ApiManagement/service/groups",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/developers')]",
+            "name": "[concat(parameters('service_name'), '/developers')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Developers",
@@ -106,9 +106,9 @@
         {
             "type": "Microsoft.ApiManagement/service/groups",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/guests')]",
+            "name": "[concat(parameters('service_name'), '/guests')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Guests",
@@ -119,9 +119,9 @@
         {
             "type": "Microsoft.ApiManagement/service/policies",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/policy')]",
+            "name": "[concat(parameters('service_name'), '/policy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "value": "<!--\r\n    IMPORTANT:\r\n    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.\r\n    - Only the <forward-request> policy element can appear within the <backend> section element.\r\n    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.\r\n    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.\r\n    - To add a policy position the cursor at the desired insertion point and click on the round button associated with the policy.\r\n    - To remove a policy, delete the corresponding policy statement from the policy document.\r\n    - Policies are applied in the order of their appearance, from the top down.\r\n-->\r\n<policies>\r\n  <inbound>\r\n    <rate-limit-by-key calls=\"4000\" renewal-period=\"10\" counter-key=\"@(context.Subscription?.Key ?? &quot;anonymous&quot;)\" />\r\n  </inbound>\r\n  <backend>\r\n    <forward-request />\r\n  </backend>\r\n  <outbound>\r\n    <set-header name=\"X-Powered-By\" exists-action=\"delete\" />\r\n    <redirect-content-urls />\r\n  </outbound>\r\n  <on-error />\r\n</policies>",
@@ -131,9 +131,9 @@
         {
             "type": "Microsoft.ApiManagement/service/portalsettings",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/delegation')]",
+            "name": "[concat(parameters('service_name'), '/delegation')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subscriptions": {
@@ -147,9 +147,9 @@
         {
             "type": "Microsoft.ApiManagement/service/portalsettings",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/signin')]",
+            "name": "[concat(parameters('service_name'), '/signin')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "enabled": false
@@ -158,9 +158,9 @@
         {
             "type": "Microsoft.ApiManagement/service/portalsettings",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/signup')]",
+            "name": "[concat(parameters('service_name'), '/signup')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "enabled": true,
@@ -173,9 +173,9 @@
         {
             "type": "Microsoft.ApiManagement/service/products",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/starter')]",
+            "name": "[concat(parameters('service_name'), '/starter')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Starter",
@@ -189,9 +189,9 @@
         {
             "type": "Microsoft.ApiManagement/service/products",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/unlimited')]",
+            "name": "[concat(parameters('service_name'), '/unlimited')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Unlimited",
@@ -205,12 +205,12 @@
         {
             "type": "Microsoft.ApiManagement/service/subscriptions",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/master')]",
+            "name": "[concat(parameters('service_name'), '/master')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
-                "scope": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name')), '/')]",
+                "scope": "[concat(resourceId('Microsoft.ApiManagement/service', parameters('service_name')), '/')]",
                 "displayName": "Built-in all-access subscription",
                 "state": "active",
                 "allowTracing": true
@@ -219,9 +219,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/AccountClosedDeveloper')]",
+            "name": "[concat(parameters('service_name'), '/AccountClosedDeveloper')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Thank you for using the $OrganizationName API!",
@@ -251,9 +251,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/ApplicationApprovedNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/ApplicationApprovedNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your application $AppName is published in the application gallery",
@@ -291,9 +291,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/ConfirmSignUpIdentityDefault')]",
+            "name": "[concat(parameters('service_name'), '/ConfirmSignUpIdentityDefault')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Please confirm your new $OrganizationName API account",
@@ -335,9 +335,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/EmailChangeIdentityDefault')]",
+            "name": "[concat(parameters('service_name'), '/EmailChangeIdentityDefault')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Please confirm the new email associated with your $OrganizationName API account",
@@ -379,9 +379,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/InviteUserNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/InviteUserNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "You are invited to join the $OrganizationName developer network",
@@ -419,9 +419,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/NewCommentNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/NewCommentNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "$IssueName issue has a new comment",
@@ -471,9 +471,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/NewDeveloperNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/NewDeveloperNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Welcome to the $OrganizationName API!",
@@ -515,9 +515,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/NewIssueNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/NewIssueNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your request $IssueName was received",
@@ -555,9 +555,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/PasswordResetByAdminNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/PasswordResetByAdminNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your password was reset",
@@ -591,9 +591,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/PasswordResetIdentityDefault')]",
+            "name": "[concat(parameters('service_name'), '/PasswordResetIdentityDefault')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your password change request",
@@ -635,9 +635,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/PurchaseDeveloperNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/PurchaseDeveloperNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your subscription to the $ProdName",
@@ -683,9 +683,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/QuotaLimitApproachingDeveloperNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/QuotaLimitApproachingDeveloperNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "You are approaching an API quota limit",
@@ -727,9 +727,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/RejectDeveloperNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/RejectDeveloperNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your subscription request for the $ProdName",
@@ -767,9 +767,9 @@
         {
             "type": "Microsoft.ApiManagement/service/templates",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/RequestDeveloperNotificationMessage')]",
+            "name": "[concat(parameters('service_name'), '/RequestDeveloperNotificationMessage')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "subject": "Your subscription request for the $ProdName",
@@ -807,9 +807,9 @@
         {
             "type": "Microsoft.ApiManagement/service/users",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/1')]",
+            "name": "[concat(parameters('service_name'), '/1')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "firstName": "Administrator",
@@ -827,10 +827,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/create-resource')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/create-resource')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Create resource",
@@ -860,10 +860,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/modify-resource')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/modify-resource')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Modify Resource",
@@ -883,10 +883,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/remove-resource')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/remove-resource')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Remove resource",
@@ -906,10 +906,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/retrieve-header-only')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/retrieve-header-only')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Retrieve header only",
@@ -929,10 +929,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/retrieve-resource')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/retrieve-resource')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Retrieve resource",
@@ -975,10 +975,10 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/retrieve-resource-cached')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/retrieve-resource-cached')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "displayName": "Retrieve resource (cached)",
@@ -1020,10 +1020,10 @@
         {
             "type": "Microsoft.ApiManagement/service/products/policies",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/starter/policy')]",
+            "name": "[concat(parameters('service_name'), '/starter/policy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM1783_name'), 'starter')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_name'), 'starter')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "value": "<!--\r\n            IMPORTANT:\r\n            - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.\r\n            - Only the <forward-request> policy element can appear within the <backend> section element.\r\n            - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.\r\n            - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.\r\n            - To add a policy position the cursor at the desired insertion point and click on the round button associated with the policy.\r\n            - To remove a policy, delete the corresponding policy statement from the policy document.\r\n            - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.\r\n            - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.\r\n            - Policies are applied in the order of their appearance, from the top down.\r\n        -->\r\n<policies>\r\n  <inbound>\r\n    <rate-limit calls=\"5\" renewal-period=\"60\" />\r\n    <quota calls=\"100\" renewal-period=\"604800\" />\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n  </outbound>\r\n</policies>",
@@ -1033,11 +1033,11 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations/policies",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/create-resource/policy')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/create-resource/policy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_APIM1783_name'), 'echo-api', 'create-resource')]",
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_name'), 'echo-api', 'create-resource')]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "value": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <json-to-xml apply=\"always\" consider-accept-header=\"false\" />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n  </outbound>\r\n</policies>",
@@ -1047,11 +1047,11 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations/policies",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/retrieve-header-only/policy')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/retrieve-header-only/policy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_APIM1783_name'), 'echo-api', 'retrieve-header-only')]",
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_name'), 'echo-api', 'retrieve-header-only')]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "value": "<policies>\r\n  <inbound>\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <set-header name=\"X-My-Sample\" exists-action=\"override\">\r\n      <value>This is a sample</value>\r\n      <!-- for multiple headers with the same name add additional value elements -->\r\n    </set-header>\r\n    <jsonp callback-parameter-name=\"ProcessResponse\" />\r\n  </outbound>\r\n</policies>",
@@ -1061,11 +1061,11 @@
         {
             "type": "Microsoft.ApiManagement/service/apis/operations/policies",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/echo-api/retrieve-resource-cached/policy')]",
+            "name": "[concat(parameters('service_name'), '/echo-api/retrieve-resource-cached/policy')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_APIM1783_name'), 'echo-api', 'retrieve-resource-cached')]",
-                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_APIM1783_name'), 'echo-api')]",
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]"
+                "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('service_name'), 'echo-api', 'retrieve-resource-cached')]",
+                "[resourceId('Microsoft.ApiManagement/service/apis', parameters('service_name'), 'echo-api')]",
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]"
             ],
             "properties": {
                 "value": "<policies>\r\n  <inbound>\r\n    <base />\r\n    <cache-lookup vary-by-developer=\"false\" vary-by-developer-groups=\"false\">\r\n      <vary-by-header>Accept</vary-by-header>\r\n      <vary-by-header>Accept-Charset</vary-by-header>\r\n    </cache-lookup>\r\n    <rewrite-uri template=\"/resource\" />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n    <cache-store duration=\"3600\" />\r\n  </outbound>\r\n</policies>",
@@ -1075,15 +1075,15 @@
         {
             "type": "Microsoft.ApiManagement/service/subscriptions",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/5eb2826eb8e9ef005c070001')]",
+            "name": "[concat(parameters('service_name'), '/5eb2826eb8e9ef005c070001')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM1783_name'), '1')]",
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM1783_name'), 'starter')]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_name'), '1')]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_name'), 'starter')]"
             ],
             "properties": {
-                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM1783_name'), '1')]",
-                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM1783_name'), 'starter')]",
+                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_name'), '1')]",
+                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_name'), 'starter')]",
                 "state": "active",
                 "allowTracing": true,
                 "displayName": "[parameters('subscriptions_5eb2826eb8e9ef005c070001_displayName')]"
@@ -1092,15 +1092,15 @@
         {
             "type": "Microsoft.ApiManagement/service/subscriptions",
             "apiVersion": "2019-12-01",
-            "name": "[concat(parameters('service_APIM1783_name'), '/5eb2826fb8e9ef005c070002')]",
+            "name": "[concat(parameters('service_name'), '/5eb2826fb8e9ef005c070002')]",
             "dependsOn": [
-                "[resourceId('Microsoft.ApiManagement/service', parameters('service_APIM1783_name'))]",
-                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM1783_name'), '1')]",
-                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM1783_name'), 'unlimited')]"
+                "[resourceId('Microsoft.ApiManagement/service', parameters('service_name'))]",
+                "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_name'), '1')]",
+                "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_name'), 'unlimited')]"
             ],
             "properties": {
-                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_APIM1783_name'), '1')]",
-                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_APIM1783_name'), 'unlimited')]",
+                "ownerId": "[resourceId('Microsoft.ApiManagement/service/users', parameters('service_name'), '1')]",
+                "scope": "[resourceId('Microsoft.ApiManagement/service/products', parameters('service_name'), 'unlimited')]",
                 "state": "active",
                 "allowTracing": true,
                 "displayName": "[parameters('subscriptions_5eb2826fb8e9ef005c070002_displayName')]"
