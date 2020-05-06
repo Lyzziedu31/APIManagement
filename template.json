@@ -5,7 +5,7 @@
         "subscriptions2_displayName": {
             "type": "SecureString"
         },
-        "subscriptions_5eb2826fb8e9ef005c070002_displayName": {
+        "subscriptions_displayName": {
             "type": "SecureString"
         },
         "users_1_lastName": {
