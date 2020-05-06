@@ -5,7 +5,10 @@
         "name": {
             "type": "string"
         },
-        "tags": {
+        "tags1": {
+            "type": "string"
+        },
+        "tags2": {
             "type": "string"
         },
         "location": {
@@ -28,6 +31,13 @@
         {
             "apiVersion": "2019-01-01",
             "name": "[parameters('name')]",
+                        "resourceTags": {
+                "type": "object",
+                "defaultValue": {
+                    "Name": "[parameters('tag1')]",
+                    "Environment": "[parameters('tag2')]"
+                }
+            },
             "location": "[parameters('location')]",
             "type": "Microsoft.ApiManagement/service",
             "sku": {
