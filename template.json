@@ -12,7 +12,7 @@
             "type": "SecureString"
         },
         "service_name": {
-            "defaultValue": "APIM1783",
+            "defaultValue": "ApiManagementSurfriderPO",
             "type": "String"
         }
     },
@@ -38,7 +38,7 @@
                 "hostnameConfigurations": [
                     {
                         "type": "Proxy",
-                        "hostName": "apim1783.azure-api.net",
+                        "hostName": "apimanagementsurfriderpo.azure-api.net",
                         "negotiateClientCertificate": false,
                         "defaultSslBinding": true
                     }
