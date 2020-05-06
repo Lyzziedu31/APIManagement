@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptions_displayName": {
-            "value": null
+            "value": "Surfrider - Azure Sponsorship 2020"
         },
         "subscriptions2_displayName": {
-            "value": null
+            "value": "Surfrider - Azure Sponsorship 2020"
         },
         "users_1_lastName": {
-            "value": null
+            "value": "DEGUILHEM"
         },
         "service_name": {
-            "value": null
+            "value": "PlasticOriginAPIM"
         }
     }
 }
