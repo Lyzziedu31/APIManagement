@@ -2,10 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscriptions_5eb2826eb8e9ef005c070001_displayName": {
+        "subscriptions_displayName": {
             "value": null
         },
-        "subscriptions_5eb2826fb8e9ef005c070002_displayName": {
+        "subscriptions_displayName": {
             "value": null
         },
         "users_1_lastName": {
