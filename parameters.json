@@ -2,29 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
-            "value": "PlasticOriginAPIM"
+        "subscriptions_5eb2826eb8e9ef005c070001_displayName": {
+            "value": null
         },
-        "tags1": {
-            "value": "LDE"
+        "subscriptions_5eb2826fb8e9ef005c070002_displayName": {
+            "value": null
         },
-        "tags2": {
-            "value": "Dev"
+        "users_1_lastName": {
+            "value": null
         },
-        "location": {
-            "value": "westeurope"
-        },
-        "adminEmail": {
-            "value": "lise.deguilhem@metsys.fr"
-        },
-        "orgName": {
-            "value": "SurfRider Fundation"
-        },
-        "tier": {
-            "value": "Developer"
-        },
-        "capacity": {
-            "value": 1
+        "service_APIM1783_name": {
+            "value": null
         }
     }
 }
