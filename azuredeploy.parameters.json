@@ -9,10 +9,13 @@
             "value": "PlasticOriginAPIM"
         },
         "nameTag": {
-            "value": "LDE"
+            "value": "lise.deguilhem@metsys.fr"
         },
         "deployTag": {
-            "value": "Dev"
+            "value": "Development"
+        },
+        "typeTag": {
+            "value": "infrastructure"
         }
     }
 }
