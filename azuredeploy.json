@@ -55,7 +55,14 @@
       "type": "string",
       "minLength": 1,
       "metadata": {
-        "description": "deploy type, allowed Prod / Dev"
+        "description": "kind of deploy, allowed Prod / Dev"
+      }
+    },
+    "typeTag": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "deploy type"
       }
     }
   },
