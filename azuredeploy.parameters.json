@@ -8,14 +8,12 @@
         "publisherName": {
             "value": "PlasticOriginAPIM"
         },
-        "nameTag": {
-            "value": "lise.deguilhem@metsys.fr"
-        },
-        "deployTag": {
-            "value": "Development"
-        },
-        "typeTag": {
-            "value": "infrastructure"
+        "resourceTags": {
+            "Value": {
+                "environment": "Devlopment",
+                "owner": "lise.deguilhem@metsys.fr",
+                "type": "infrastructure"
+            }
         }
     }
 }
