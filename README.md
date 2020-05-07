@@ -1,9 +1,14 @@
+#Doc in progress
+
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This repo contains ARM and scripts to manage API Management service and BackEnd API registration
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
+1.	CUD_ json files are used to manage API Management service
+    - C to create
+    - U to update
+    - D to delete
+
 2.	Software dependencies
 3.	Latest releases
 4.	API references
